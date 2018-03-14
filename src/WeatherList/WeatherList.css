@@ -1,0 +1,10 @@
+.root {
+	max-width: 1024px;
+	min-width: 768px;
+	margin: auto;
+	width: 50%;
+}
+
+.search-field {
+	margin: 32px 0;
+}
