@@ -37,7 +37,7 @@ export default function(state = initialState, action) {
 			const exists = cities.some(item => item.id === payload)
 			if (!exists) {
 				const city = suggestions.find(item => item.id === payload)
-				return { ...state, cities: [...cities, city], selectedCityId: null }
+				return { ...state, cities: [...cities, city] }
 			} else return { ...state }
 		}
 
