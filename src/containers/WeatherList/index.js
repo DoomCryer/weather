@@ -37,7 +37,9 @@ class WeatherList extends Component {
 
 	addCity = () => {
 		const { selectedCityId: id, dispatch } = this.props
-		dispatch(addCity(id))
+		if (id != null) {
+			dispatch(addCity(id))
+		}
 	}
 
 	removeCity = id => {
@@ -79,31 +81,31 @@ class WeatherList extends Component {
 
 		return (
 			<div className="root">
-				<h1>Weather Application</h1>
-				<div className="search-field">
-					<AutoComplete
-						style={{ width: '150px' }}
-						dataSource={foundedCities}
-						onSearch={this.searchThrottle}
-						onSelect={this.onSelect}
-						optionLabelProp="text"
-						placeholder={`Enter city name`}
-					>
-						<Input ref={field => (this.inputField = field)} />
-					</AutoComplete>
-					<Button style={{ marginLeft: '16px' }} type="primary" onClick={this.addCity}>
-						Add
-					</Button>
+				<div className="content">
+					<div className="search-field">
+						<AutoComplete
+							style={{ width: '150px' }}
+							dataSource={foundedCities}
+							onSearch={this.searchThrottle}
+							onSelect={this.onSelect}
+							optionLabelProp="text"
+							placeholder={`Enter city name`}
+						>
+							<Input ref={field => (this.inputField = field)} />
+						</AutoComplete>
+						<Button style={{ marginLeft: '16px' }} type="primary" onClick={this.addCity}>
+							Add
+						</Button>
+					</div>
+					<Table
+						pagination={false}
+						bordered
+						rowKey="id"
+						onRow={this.onRow}
+						columns={columns}
+						dataSource={cities}
+					/>
 				</div>
-
-				<Table
-					pagination={false}
-					bordered
-					rowKey="id"
-					onRow={this.onRow}
-					columns={columns}
-					dataSource={cities}
-				/>
 			</div>
 		)
 	}

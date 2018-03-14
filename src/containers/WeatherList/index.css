@@ -1,8 +1,14 @@
 @import '~antd/dist/antd.css';
 
 .root {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+}
+
+.content {
 	width: 1024px;
-	margin: auto;
+	margin: 0px auto;
 }
 
 .search-field {
